@@ -1,19 +1,5 @@
-**INSTITUTO FEDERAL GOIANO**  
-**CAMPUS CERES**  
+**INSTITUTO FEDERAL GOIANO \- CAMPUS CERES**  
 **BACHARELADO EM SISTEMAS DE INFORMAÇÃO**
-
-TIAGO CARDOSO FERREIRA  
-FELIPE RAMOS SILVA REIS  
-LUANNA FERNANDES DA SILVA
-
-**ESCUDO PIX: SIMULADOR EDUCATIVO DE PREVENÇÃO A GOLPES DIGITAIS PARA O PÚBLICO IDOSO**
-
-Documento de requisitos de software
-
-Ceres \- GO  
-2026  
-**INSTITUTO FEDERAL GOIANO**  
-**CAMPUS CERES**
 
 TIAGO CARDOSO FERREIRA  
 FELIPE RAMOS SILVA REIS  
@@ -24,10 +10,6 @@ LUANNA FERNANDES DA SILVA
 Documento de requisitos de software apresentado à disciplina de Programação para Dispositivos Móveis do curso de Bacharelado em Sistemas de Informação do Instituto Federal Goiano \- Campus Ceres.
 
 Docente: Paulo César Melo
-
-Ceres \- GO  
-2026  
-**SUMÁRIO**
 
 **1 INTRODUÇÃO	4**  
 1.1 Contexto	4  
