@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escudo Pix – protótipo de telas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#F3F5F8;--card:#fff;--ink:#16222E;--mute:#4A5968;--brand:#1B4B7A;--on:#fff;--ok:#1B6B3A;--bad:#A32A2A;--warn:#7A5000;--line:#C9D1DB;--in:#E4E9F0;--out:#D6E6F7;--stage:#DDE3EA;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1720;--card:#18232F;--ink:#EEF2F6;--mute:#B2BECB;--brand:#7FB2E5;--on:#0F1720;--ok:#6CCB8C;--bad:#FF9A9A;--warn:#F0C36A;--line:#33414F;--in:#223040;--out:#1E3A57;--stage:#0A1017}}
+:root[data-theme="dark"]{--bg:#0F1720;--card:#18232F;--ink:#EEF2F6;--mute:#B2BECB;--brand:#7FB2E5;--on:#0F1720;--ok:#6CCB8C;--bad:#FF9A9A;--warn:#F0C36A;--line:#33414F;--in:#223040;--out:#1E3A57;--stage:#0A1017}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--stage);color:var(--ink);font:400 18px/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;display:flex;justify-content:center;align-items:center}
+.phone{width:100%;max-width:400px;height:100%;max-height:820px;background:var(--bg);display:flex;flex-direction:column;overflow:hidden}
+@media(min-width:520px){.phone{border-radius:28px;border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,0,0,.18)}}
+header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--card)}
+header h1{font-size:20px;margin:0;flex:1}
+.badge{border:2px solid var(--warn);color:var(--warn);border-radius:8px;padding:2px 10px;font-weight:700;font-size:16px}
+main{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+main:focus{outline:none}
+h2{font-size:24px;line-height:1.2;margin:0}
+p{margin:0;max-width:60ch}
+.mute{color:var(--mute)}
+button,input{font:inherit;color:inherit}
+.btn{min-height:56px;border-radius:14px;border:2px solid var(--brand);background:var(--brand);color:var(--on);font-weight:700;padding:10px 18px;cursor:pointer;width:100%}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:focus-visible,.row:focus-visible,.nav button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+input{width:100%;min-height:56px;border-radius:14px;border:2px solid var(--line);background:var(--card);padding:10px 14px}
+label{font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.row{display:flex;align-items:center;gap:12px;min-height:72px;text-align:left;cursor:pointer;width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.row[disabled]{opacity:.7;cursor:default}
+.row b{display:block}
+.row .go{margin-left:auto;font-size:26px;color:var(--mute)}
+.chat{display:flex;flex-direction:column;gap:10px}
+.who{font-size:16px;color:var(--mute)}
+.bub{background:var(--in);border-radius:16px 16px 16px 4px;padding:12px 14px;max-width:88%}
+.bub.me{background:var(--out);align-self:flex-end;border-radius:16px 16px 4px 16px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{min-height:56px;border:2px solid var(--brand);border-radius:14px;background:var(--card);padding:10px 14px;text-align:left;font-weight:700;cursor:pointer}
+.opt:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.tag{font-weight:700;display:inline-flex;gap:6px;align-items:center}
+.tag.ok{color:var(--ok)}.tag.bad{color:var(--bad)}.tag.mid{color:var(--warn)}
+.card.ok{border-left:6px solid var(--ok)}.card.bad{border-left:6px solid var(--bad)}.card.mid{border-left:6px solid var(--warn)}
+ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.bar{height:14px;border-radius:7px;background:var(--in);overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;background:var(--brand)}
+.nav{display:flex;border-top:1px solid var(--line);background:var(--card)}
+.nav button{flex:1;min-height:64px;background:none;border:0;font-weight:700;cursor:pointer;color:var(--mute);border-top:4px solid transparent}
+.nav button[aria-current="page"]{color:var(--ink);border-top-color:var(--brand)}
+.step{font-size:16px;color:var(--mute)}
+@media(prefers-reduced-motion:no-preference){main>*{animation:in .2s ease-out}@keyframes in{from{opacity:.4}to{opacity:1}}}
+</style>
+</head>
+<body>
+<div class="phone">
+<header>
+<svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 6v9c0 8 5 14 12 17 7-3 12-9 12-17V6z" fill="var(--brand)"/><path d="m9 17 4 4 8-9" fill="none" stroke="var(--on)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h1>Escudo Pix</h1><span class="badge">Treino</span>
+</header>
+<main id="main" tabindex="-1"></main>
+<nav class="nav" id="nav" aria-label="Navegação principal"></nav>
+</div>
+<script>
+var esc=function(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML};
+var STEPS=[
+{msgs:[["Número novo",`Oi vó, é o Lucas! Troquei de número, o outro caiu na água. Salva esse aí.`]],
+ opts:[
+ {t:`Salvar o número e responder`,r:0,c:`A pessoa agradece e, em seguida, pede ajuda.`,e:`Uma mudança de número sem confirmação é o começo mais comum desse golpe. Responder confirma que a conta está ativa.`},
+ {t:`Ligar para o Lucas no número antigo`,r:2,c:`O Lucas atende e diz que está tudo bem: ele não trocou de número.`,e:`Confirmar por um contato que você já conhece é a forma mais segura de descobrir a verdade.`},
+ {t:`Ignorar a mensagem`,r:1,c:`Nada acontece, mas você não fica sabendo se o Lucas precisa de algo.`,e:`Ignorar protege você, mas confirmar com a família resolve a dúvida e ajuda a avisar os outros.`}]},
+{msgs:[["Número novo",`Vó, preciso de um favor urgente. Tem como fazer um Pix de R$ 1.800,00? Pago amanhã, juro.`]],
+ opts:[
+ {t:`Fazer o Pix para ajudar`,r:0,c:`O dinheiro sai da sua conta e o contato some.`,e:`Pedido de dinheiro com urgência é o principal sinal de alerta. Um Pix feito para golpista dificilmente volta.`},
+ {t:`Pedir uma chamada de vídeo`,r:1,c:`A pessoa diz que a câmera quebrou e insiste no Pix.`,e:`Foi uma boa desconfiança, mas o melhor é ligar para o número que você já tinha.`},
+ {t:`Bloquear e avisar a família`,r:2,c:`Seus parentes confirmam que o Lucas está bem. O golpe falhou.`,e:`Bloquear corta o contato, e avisar a família protege outras pessoas que podem receber a mesma mensagem.`}]}];
+var RES=[["bad","✖","Inadequada"],["mid","◐","Parcial"],["ok","✔","Adequada"]];
+var S={scr:"perfil",name:"",step:0,pick:null,picks:[],hist:[["Falso parente","Parcialmente adequado","20/10"],["Falso parente","Inadequado","18/10"]]};
+function go(s){S.scr=s;render()}
+function start(){S.step=0;S.picks=[];S.pick=null;go("conversa")}
+function choose(i){S.pick=STEPS[S.step].opts[i];S.picks.push(S.pick.r);go("feedback")}
+function next(){if(S.step<STEPS.length-1){S.step++;go("conversa")}else{finish()}}
+function finish(){var n=S.picks.filter(function(r){return r==2}).length;var lbl=n==STEPS.length?"Adequado":n>0?"Parcialmente adequado":"Inadequado";S.last=lbl;S.hist.unshift(["Falso parente",lbl,"28/10"]);go("resumo")}
+function save(){var v=document.getElementById("nome").value.trim();S.name=v||"Visitante";go("lista")}
+function chat(msgs){return `<div class="chat">`+msgs.map(function(m){return `<div><div class="who">${esc(m[0])}</div><div class="bub">${esc(m[1])}</div></div>`}).join("")+`</div>`}
+var V={
+perfil:function(){return `<h2>Bem-vindo ao Escudo Pix</h2><p>Aqui você treina, sem risco, como reconhecer mensagens de golpe. Nada do que aparece é real.</p><label for="nome">Como podemos chamar você?</label><input id="nome" autocomplete="off" placeholder="Seu nome ou apelido"><p class="mute">Não pedimos senha. Seus dados ficam só neste celular.</p><button class="btn" onclick="save()">Começar</button>`},
+lista:function(){return `<h2>Olá, ${esc(S.name)}</h2><p class="mute">Escolha um tipo de golpe para treinar.</p>
+<button class="row" onclick="start()"><span><b>Falso parente</b><span class="mute">“Troquei de número” e pedido de Pix</span></span><span class="go" aria-hidden="true">›</span></button>
+<button class="row" disabled><span><b>Falsa central bancária</b><span class="mute">Em breve</span></span></button>
+<button class="row" disabled><span><b>Benefício ou INSS falso</b><span class="mute">Em breve</span></span></button>
+<button class="row" disabled><span><b>Cobrança ou boleto falso</b><span class="mute">Em breve</span></span></button>`},
+conversa:function(){var st=STEPS[S.step];var prev=S.step>0?`<div class="chat"><div class="bub me">${esc(S.pick.t)}</div></div>`:"";return `<div class="step">Etapa ${S.step+1} de ${STEPS.length}</div>${S.step>0?chat(STEPS[0].msgs)+prev:""}${chat(st.msgs)}<h2>O que você faz?</h2><div class="opts">`+st.opts.map(function(o,i){return `<button class="opt" onclick="choose(${i})">${esc(o.t)}</button>`}).join("")+`</div><p class="mute">Telefones e links deste treino não funcionam de verdade.</p>`},
+feedback:function(){var o=S.pick,r=RES[o.r];return `<div class="step">Etapa ${S.step+1} de ${STEPS.length}</div><div class="card ${r[0]}"><span class="tag ${r[0]}">${r[1]} ${r[2]}</span><b>${esc(o.t)}</b></div><div class="card"><b>O que aconteceu</b><p>${esc(o.c)}</p></div><div class="card"><b>Por quê</b><p>${esc(o.e)}</p></div><button class="btn" onclick="next()">${S.step<STEPS.length-1?"Continuar":"Ver resumo"}</button>`},
+resumo:function(){var m={"Adequado":"ok","Parcialmente adequado":"mid","Inadequado":"bad"}[S.last],ic={ok:"✔",mid:"◐",bad:"✖"}[m];return `<h2>Resumo do treino</h2><div class="card ${m}"><span class="tag ${m}">${ic} Resultado: ${S.last}</span></div><div class="card"><b>Sinais de alerta nesta conversa</b><ul><li>Número novo, sem confirmação</li><li>Pedido urgente de dinheiro</li><li>Pix para quem você não confirmou</li><li>Promessa de pagar “amanhã”</li></ul></div><div class="card"><b>Numa situação real</b><p>Antes de pagar qualquer coisa, ligue para a pessoa no número que você já conhece ou pergunte a outro familiar.</p></div><button class="btn" onclick="go('lista')">Voltar aos cenários</button><button class="btn alt" onclick="start()">Refazer este cenário</button>`},
+historico:function(){var tipos=[["Falso parente",S.hist.length?60:0],["Falsa central bancária",0],["Benefício ou INSS falso",0],["Cobrança ou boleto falso",0]];return `<h2>Seu histórico</h2><div class="card"><b>Desempenho por tipo</b>`+tipos.map(function(t){return `<div style="margin-top:8px">${esc(t[0])}: <b>${t[1]}%</b> de acertos</div><div class="bar" role="img" aria-label="${t[1]} por cento"><i style="width:${t[1]}%"></i></div>`}).join("")+`</div><b>Tentativas</b>`+S.hist.map(function(h){return `<div class="card"><b>${esc(h[0])}</b><span class="mute">${esc(h[1])} • ${esc(h[2])}</span></div>`}).join("")}
+};
+function render(){var m=document.getElementById("main");m.innerHTML=V[S.scr]();m.scrollTop=0;
+var nav=document.getElementById("nav");var show=S.scr=="lista"||S.scr=="historico";
+nav.style.display=show?"flex":"none";
+nav.innerHTML=show?`<button onclick="go('lista')" ${S.scr=="lista"?'aria-current="page"':""}>Cenários</button><button onclick="go('historico')" ${S.scr=="historico"?'aria-current="page"':""}>Histórico</button>`:"";
+if(S.scr!="perfil")m.focus({preventScroll:true})}
+render();
+</script>
+</body>
+</html>
